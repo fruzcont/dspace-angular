@@ -37,7 +37,7 @@ services:
       context: ..
       dockerfile: Dockerfile
     networks:
-      default_net:
+      - default
     ports:
     - published: ${DSPACE_UI_PORT}
       target: ${DSPACE_UI_PORT}

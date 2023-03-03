@@ -48,7 +48,7 @@ services:
     depends_on:
     - dspacedb
     networks:
-      default_net:
+      - default
     ports:
     - published: ${DSPACE_REST_PORT}
       target: ${DSPACE_REST_PORT}
@@ -76,7 +76,7 @@ services:
       PGDATA: /pgdata
     image: dspace/dspace-postgres-pgcrypto:latest
     networks:
-      default_net:
+      - default
     ports:
     - published: ${DATABASE_PORT}
       target: ${DATABASE_PORT}
@@ -93,7 +93,7 @@ services:
     depends_on:
     - dspace
     networks:
-      default_net:
+      - default
     ports:
     - published: ${DSPACE_SOLR_PORT}
       target: ${DSPACE_SOLR_PORT}
