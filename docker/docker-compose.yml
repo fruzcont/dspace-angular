@@ -9,7 +9,7 @@
 # Docker Compose for running the DSpace Angular UI for testing/development
 # Requires also running a REST API backend (either locally or remotely),
 # for example via 'docker-compose-rest.yml'
-version: '3.9'
+version: '3.7'
 x-shared_environment: &shared_environment
   DSPACE_REST_PORT: ${DSPACE_REST_PORT}
   DSPACE_UI_PORT: ${DSPACE_UI_PORT}
@@ -39,9 +39,11 @@ services:
     networks:
       - default
     ports:
-    - published: ${DSPACE_UI_PORT}
-      target: ${DSPACE_UI_PORT}
-    - published: ${DSPACE_UI_OTHER_PORT}
-      target: ${DSPACE_UI_OTHER_PORT}
+      - ${DSPACE_UI_PORT}:DSPACE_UI_PORT
+      - ${DSPACE_UI_OTHER_PORT}:${DSPACE_UI_OTHER_PORT}
+    #- published: ${DSPACE_UI_PORT}
+    #  target: ${DSPACE_UI_PORT}
+    #- published: ${DSPACE_UI_OTHER_PORT}
+    #  target: ${DSPACE_UI_OTHER_PORT}
     stdin_open: true
     tty: true

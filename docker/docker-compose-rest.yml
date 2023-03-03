@@ -10,7 +10,7 @@
 # This is based heavily on the docker-compose.yml that is available in the DSpace/DSpace
 # (Backend) at:
 # https://github.com/DSpace/DSpace/blob/main/docker-compose.yml
-version: '3.9'
+version: '3.7'
 
 x-shared_environment: &shared_environment
   DATABASE_PORT: ${DATABASE_PORT}
@@ -50,8 +50,11 @@ services:
     networks:
       - default
     ports:
-    - published: ${DSPACE_REST_PORT}
-      target: ${DSPACE_REST_PORT}
+      - ${DSPACE_REST_PORT}:${DSPACE_REST_PORT}
+    expose:
+      - ${DSPACE_REST_PORT}
+#    - published: ${DSPACE_REST_PORT}
+#      target: ${DSPACE_REST_PORT}
     stdin_open: true
     tty: true
     volumes:
@@ -78,8 +81,11 @@ services:
     networks:
       - default
     ports:
-    - published: ${DATABASE_PORT}
-      target: ${DATABASE_PORT}
+      - ${DATABASE_PORT}:${DATABASE_PORT}
+    expose:
+      - ${DATABASE_PORT}
+#    - published: ${DATABASE_PORT}
+#      target: ${DATABASE_PORT}
     stdin_open: true
     tty: true
     volumes:
@@ -95,8 +101,9 @@ services:
     networks:
       - default
     ports:
-    - published: ${DSPACE_SOLR_PORT}
-      target: ${DSPACE_SOLR_PORT}
+      - ${DSPACE_SOLR_PORT}:${DSPACE_SOLR_PORT}
+    #- published: ${DSPACE_SOLR_PORT}
+    #  target: ${DSPACE_SOLR_PORT}
     stdin_open: true
     tty: true
     working_dir: /var/solr/data
