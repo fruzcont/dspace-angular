@@ -41,6 +41,8 @@ services:
     ports:
       - ${DSPACE_UI_PORT}:DSPACE_UI_PORT
       - ${DSPACE_UI_OTHER_PORT}:${DSPACE_UI_OTHER_PORT}
+    expose:
+      - ${DSPACE_UI_PORT}
     #- published: ${DSPACE_UI_PORT}
     #  target: ${DSPACE_UI_PORT}
     #- published: ${DSPACE_UI_OTHER_PORT}
