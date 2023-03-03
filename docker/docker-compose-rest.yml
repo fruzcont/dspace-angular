@@ -18,6 +18,11 @@ x-shared_environment: &shared_environment
   DSPACE_UI_PORT: ${DSPACE_UI_PORT}
   DSPACE_SOLR_PORT: ${DSPACE_SOLR_PORT}
 
+networks:
+  default:
+    external:
+      name: default_net
+
 services:
   # DSpace (backend) webapp container
   dspace:
